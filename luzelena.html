@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>03.11.2025 💜</title>
+
+<style>
+body{
+    margin:0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(180deg, #c471f5, #fa71cd);
+    color:white;
+    text-align:center;
+    overflow-x:hidden;
+}
+
+.section{
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    padding:30px 20px;
+}
+
+h1,h2{
+    margin:10px 0;
+}
+
+button{
+    background:white;
+    color:#c471f5;
+    border:none;
+    padding:14px 28px;
+    border-radius:30px;
+    font-size:16px;
+    margin-top:20px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+button:hover{
+    transform:scale(1.05);
+}
+
+.contador{
+    font-size:20px;
+    margin-top:15px;
+}
+
+.galeria{
+    display:flex;
+    overflow-x:auto;
+    scroll-snap-type:x mandatory;
+    width:100%;
+}
+
+.galeria img{
+    width:85%;
+    max-width:350px;
+    border-radius:20px;
+    margin:0 10px;
+    scroll-snap-align:center;
+}
+
+.cupon{
+    background:rgba(255,255,255,0.2);
+    padding:15px;
+    border-radius:20px;
+    margin:10px 0;
+    width:80%;
+    max-width:350px;
+}
+
+.final{
+    font-size:22px;
+    margin-top:20px;
+}
+
+.heart{
+    position:fixed;
+    bottom:-10px;
+    font-size:20px;
+    animation: float 6s linear infinite;
+}
+
+@keyframes float{
+    0%{transform:translateY(0); opacity:1;}
+    100%{transform:translateY(-100vh); opacity:0;}
+}
+</style>
+</head>
+
+<body>
+
+<audio id="musica" loop>
+<source src="musica.mp3" type="audio/mpeg">
+</audio>
+
+<div class="section">
+<h1>Feliz 4 Meses 💜</h1>
+<h2>Luz Elena</h2>
+<p>Desde el 03 de noviembre de 2025</p>
+<button onclick="playMusic()">Toca aquí para escuchar algo especial</button>
+</div>
+
+<div class="section">
+<h2>Llevamos juntos...</h2>
+<div class="contador" id="contador"></div>
+</div>
+
+<div class="section">
+<h2>Nosotros 📸</h2>
+<div class="galeria">
+<img src="foto1.jpg">
+<img src="foto2.jpg">
+<img src="foto3.jpg">
+<img src="foto4.jpg">
+<img src="foto5.jpg">
+</div>
+</div>
+
+<div class="section">
+<h2>Lo que significas para mí</h2>
+
+<p style="max-width:350px;">
+No llegaste a mi vida para cambiarla…  
+Llegaste para hacerme entender que el amor no es complicado cuando es real.
+</p>
+
+<p style="max-width:350px;">
+Desde que estoy contigo, mis días tienen algo diferente.  
+Algo más tranquilo.  
+Algo más bonito.
+</p>
+
+<p style="max-width:350px;">
+Gracias por tu paciencia, por tu ternura,  
+por cómo me miras,  
+y por cómo haces que todo en mí quiera ser mejor.
+</p>
+
+<p style="max-width:350px;">
+Si volviera al 03 de noviembre de 2025…  
+te volvería a elegir.
+</p>
+</div>
+
+<div class="section">
+<h2>Cupones válidos solo para ti 🎟️</h2>
+
+<div class="cupon">💆‍♀️ Un masaje cuando tú lo necesites.</div>
+<div class="cupon">🍔 Una cita donde tú eliges todo.</div>
+<div class="cupon">🎬 Una noche de películas sin discutir qué ver.</div>
+<div class="cupon">🤍 Un abrazo largo sin límite de tiempo.</div>
+<div class="cupon">🥰 Muchos besitos en tu carita hermosa. </div>
+
+</div>
+
+<div class="section">
+<h2 class="final">
+Quiero seguir sumando días contigo…  
+meses contigo…  
+momentos contigo.
+</h2>
+
+<h1>¿Seguimos escribiendo nuestra historia? 💜</h1>
+
+<button onclick="respuesta()">Sí 💜</button>
+
+</div>
+
+<script>
+
+function playMusic(){
+    document.getElementById("musica").play();
+}
+
+function actualizarContador(){
+    const inicio = new Date("2025-11-03T00:00:00");
+    const ahora = new Date();
+    const diferencia = ahora - inicio;
+
+    const dias = Math.floor(diferencia / (1000*60*60*24));
+    const horas = Math.floor((diferencia / (1000*60*60)) % 24);
+    const minutos = Math.floor((diferencia / (1000*60)) % 60);
+    const segundos = Math.floor((diferencia / 1000) % 60);
+
+    document.getElementById("contador").innerHTML =
+    dias + " días 💜<br>" +
+    horas + " horas 💜<br>" +
+    minutos + " minutos 💜<br>" +
+    segundos + " segundos";
+}
+
+setInterval(actualizarContador,1000);
+
+function respuesta(){
+    document.body.innerHTML = `
+    <div class="section">
+    <h1>Gracias por estos 4 meses 💜</h1>
+    <p>Prometo seguir cuidando lo que estamos construyendo.</p>
+    <h2>Te amo, Luz Elena.</h2>
+    </div>
+    `;
+}
+
+setInterval(()=>{
+    let heart = document.createElement("div");
+    heart.className="heart";
+    heart.innerText="💜";
+    heart.style.left = Math.random()*100+"vw";
+    document.body.appendChild(heart);
+    setTimeout(()=>{heart.remove();},6000);
+},700);
+
+</script>
+
+</body>
+</html>
